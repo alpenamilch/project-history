@@ -191,7 +191,7 @@ public class HistoryProvider extends ContentProvider {
     }
 
     public interface Columns extends BaseColumns {
-        String AUTHORITY = "com.oF2pks.browser4.history";
+        String AUTHORITY = "com.oF2pks.browserslac.history";
         Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/history");
 
         String TITLE = "title";

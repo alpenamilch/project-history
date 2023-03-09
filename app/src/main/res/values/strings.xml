@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">B4</string>
+    <string name="app_name">Slack</string>
 
     <!-- Menu action: create new tab -->
     <string name="menu_new_tab">New tab</string>
@@ -31,7 +31,7 @@
     <!-- Menu action: show history list -->
     <string name="menu_history">History</string>
     <!-- Menu action: add shortcut of the current page to the launcher -->
-    <string name="menu_shortcut">Add shortcut</string>
+    <string name="menu_shortcut">Shortcut</string>
     <!-- Menu action: show settings -->
     <string name="menu_settings">Settings</string>
     <!-- Menu action: download selected file / image -->
@@ -39,13 +39,13 @@
     <!-- Menu action: open selected link in a new tab -->
     <string name="menu_in_new_tab">Open in new tab</string>
     <!-- Menu action: enable desktop mode -->
-    <string name="menu_desktop_mode">Switch to desktop site</string>
+    <string name="menu_desktop_mode">Desktop</string>
     <!-- Menu action: enable phone mode -->
     <string name="menu_mobile_mode">Switch to mobile site</string>
     <!-- Menu action: search in page -->
     <string name="menu_search">Find in page</string>
     <!-- Menu action: print -->
-    <string name="menu_print">Close</string>
+    <string name="menu_print">Slack</string>
 
     <string name="tabs_info">\u2936LongClick\u205E\nTabs manager</string>
     <string name="kill_all">kill_all Tabs</string>
@@ -183,7 +183,7 @@
     <string name="error_no_activity_found">No app can handle this link</string>
 
     <string translatable="false" name="default_search_engine">https://google.com/search?ie=UTF-8&amp;source=android-browser&amp;q={searchTerms}</string>
-    <string translatable="false" name="default_home_page">https://www.google.com</string>
+    <string translatable="false" name="default_home_page">https://slack.com/signin</string>
     <string translatable="false" name="default_suggestion_provider">GOOGLE</string>
 
     <!-- Auth dialog: title -->
@@ -219,5 +219,5 @@
     <string name="ssl_cert_dialog_expires_on">Expires On</string>
     <string name="ssl_cert_dialog_dismiss">Dismiss</string>
 
-    <string name="save_url_mht">Offline view to .mht</string>
+    <string name="save_url_mht">MHT</string>
 </resources>

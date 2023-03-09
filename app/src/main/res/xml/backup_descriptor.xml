@@ -17,7 +17,7 @@
     <!-- Shared preferences -->
     <include
         domain="sharedpref"
-        path="com.oF2pks.browser4_preferences.xml" />
+        path="com.oF2pks.browserslac_preferences.xml" />
 
     <!-- Databases -->
     <include

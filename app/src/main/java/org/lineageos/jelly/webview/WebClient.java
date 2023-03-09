@@ -93,6 +93,9 @@ class WebClient extends WebViewClient {
                     && !request.isRedirect()
                     && startActivityForUrl(view, url)) {
                 return true;
+            } else if (!url.startsWith("https")) {
+               //Toast.makeText(activity, "No stupid app store here!", Toast.LENGTH_SHORT).show();
+               return true;
             } else if (!webViewExt.getRequestHeaders().isEmpty()) {
                 webViewExt.followUrl(url);
                 return true;

@@ -116,7 +116,7 @@ import java.util.List;
 public class MainActivity extends WebViewExtActivity implements
         SearchBarController.OnCancelListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final String PROVIDER = "com.oF2pks.browser4.fileprovider";
+    private static final String PROVIDER = "com.oF2pks.browserslac.fileprovider";
     private static final String STATE_KEY_THEME_COLOR = "theme_color";
     private static final int STORAGE_PERM_REQ = 423;
     private static final int LOCATION_PERM_REQ = 424;
@@ -267,7 +267,7 @@ public class MainActivity extends WebViewExtActivity implements
 
         mWebView = findViewById(R.id.web_view);
         mWebView.init(this, urlBarController, mLoadingProgress, mIncognito);
-        mWebView.setDesktopMode(desktopMode);
+        mWebView.setDesktopMode(true);
         mWebView.loadUrl(url == null ? PrefsUtils.getHomePage(this) : url);
 
         AdBlocker.init(this);
@@ -483,36 +483,18 @@ public class MainActivity extends WebViewExtActivity implements
                 } else if (itemId == R.id.menu_search) {// Run the search setup
                     showSearch();
                 } else if (itemId == R.id.menu_shortcut) {
-                    addShortcut(mWebView.getTitle(), mWebView.getUrl());
+                    mWebView.loadUrl("https://google.com");
+                    //addShortcut(mWebView.getTitle(), mWebView.getUrl());
                 } else if (itemId == R.id.menu_print) {
-                        try {
-                            finish();
-                            // clearing app data
-                            //Runtime runtime = Runtime.getRuntime();
-                            //runtime.exec("pm clear com.oF2pks.browser4");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                    mWebView.loadUrl("https://slack.com/signin");
                 } else if (itemId == R.id.save_mht) {
-                    if (Build.VERSION.SDK_INT < 29) {
-                        mWebView.saveWebArchive(pathSaveWebArchive() + nameSaveWebArchive());
-                    } else {
-                        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-                        intent.addCategory(Intent.CATEGORY_OPENABLE);
-                        intent.setType("text/mht");
-                        intent.putExtra(Intent.EXTRA_TITLE, nameSaveWebArchive());
-                        startActivityForResult(intent, MHT_ONACTIVITYRESULT);
-
-                    }
-                    addShortcut("\u2707" + mWebView.getTitle(), "file:///" + pathSaveWebArchive() + nameSaveWebArchive());
-                    setAsFavorite("\u2707" + mWebView.getTitle(), pathSaveWebArchive() + nameSaveWebArchive());
-                    Toast.makeText(this, "\u2707" + getExternalFilesDir(null), Toast.LENGTH_LONG).show();
+                    mWebView.loadUrl("https://google.com");
                 } else if (itemId == R.id.desktop_mode) {
                     mWebView.setDesktopMode(!isDesktop);
-                    desktopMode.setTitle(getString(isDesktop ?
-                            R.string.menu_desktop_mode : R.string.menu_mobile_mode));
-                    desktopMode.setIcon(ContextCompat.getDrawable(this, isDesktop ?
-                            R.drawable.ic_desktop : R.drawable.ic_mobile));
+                     desktopMode.setTitle(getString(isDesktop ?
+                                R.string.menu_desktop_mode : R.string.menu_mobile_mode));
+                        desktopMode.setIcon(ContextCompat.getDrawable(this, isDesktop ?
+                                R.drawable.ic_desktop : R.drawable.ic_mobile));
                 } else if (itemId == R.id.menu_history) {
                     startActivity(new Intent(this, HistoryActivity.class));
                 } else if (itemId == R.id.menu_settings) {
@@ -716,8 +698,8 @@ public class MainActivity extends WebViewExtActivity implements
         mLoadingProgress.setProgressTintList(ColorStateList.valueOf(progressColor));
         mLoadingProgress.postInvalidate();
 
-            getWindow().setStatusBarColor(Color.BLACK);
-            getWindow().setNavigationBarColor(Color.BLACK);
+            getWindow().setStatusBarColor(color);
+            getWindow().setNavigationBarColor(color);
 
         setTaskDescription(new ActivityManager.TaskDescription(mWebView.getTitle(),
                 mUrlIcon, color));
@@ -734,8 +716,8 @@ public class MainActivity extends WebViewExtActivity implements
         }
         getWindow().getDecorView().setSystemUiVisibility(flags);
 
-        getWindow().setStatusBarColor(Color.BLACK);//getResources().getColor(R.color.colorAccent)
-        getWindow().setNavigationBarColor(Color.BLACK);
+        //getWindow().setStatusBarColor(Color.BLACK);//getResources().getColor(R.color.colorAccent)
+        //getWindow().setNavigationBarColor(Color.BLACK);
     }
 
     private int getThemeColorWithFallback() {
